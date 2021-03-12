@@ -1,0 +1,16 @@
+          body {
+              height: 100vh;
+              display: flex;
+              flex-direction: column;
+          }
+          
+          .footer {
+              margin-top: auto;
+              display: flex;
+              justify-content: center;
+              height: 60px;
+          }
+          
+          .footer p {
+              line-height: 60px;
+          }
