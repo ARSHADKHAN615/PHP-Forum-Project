@@ -8,8 +8,8 @@
     <meta name="Description" content="Enter your description here" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css">
-    <link rel="stylesheet" href="CSS/style.css">
-    <title>Title</title>
+    <link rel="stylesheet" href="css/style.css">
+    <title>Threads</title>
 </head>
 
 <body>
@@ -50,7 +50,8 @@
 
 
     <div class="container">
-        <h1>Post Comments</h1>
+        <h2>Post Comments</h2>
+        <hr>
         <?php
         $showAlert = false;
         $method = $_SERVER["REQUEST_METHOD"];
@@ -79,28 +80,29 @@
         <?php
         // session_start();
         if (isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"]) {
-            // print_r($_SESSION["sno"]);
             echo '<form class="my-5" action="' . $_SERVER['REQUEST_URI'] . '" method="POST">
             <div class="form-group">
             <label for="comment">Type Your Comment</label>
-            <textarea class="form-control" id="comment" name="comment" rows="3"></textarea>
+            <textarea class="form-control" id="comment" name="comment" rows="3" required></textarea>
             <input type="hidden" name="sno" value="' . $_SESSION['sno'] . '">
             </div>
                 <button type="submit" class="btn btn-primary">Post Comment</button>
            </form>
            </div>';
-            // echo $_SESSION["sno"];
         } else {
-            echo '<div class="container">
-                     <p><b>Your Are Not logged in</b></p>
+            echo '<div class="container-fluid px-0 my-5">
+                     <div class="alert alert-dark" role="alert">
+                             You are Not Login  <a href="index.php" class="alert-link">Please Login then Try</a>. 
+                      </div>
                  </div>';
         }
 
         ?>
 
 
-        <div class="container">
-            <h1>Discussion</h1>
+        <div class="container px-0">
+            <h2>Discussion</h2>
+            <hr>
             <?php
             $threadId = $_GET['threadId'];
             $sql = "SELECT * FROM comments WHERE thread_id=$threadId";
@@ -132,8 +134,8 @@
             if (!$noResult) {
                 echo "<div class='jumbotron jumbotron-fluid'>
                     <div class='container'>
-                        <h1 class='display-4'>No Comment Found</h1>
-                        <p class='lead'>Be The First Person to  ask a Question</p>
+                        <h4>No Comment Found</h4>
+                        <p>Be The First Person to  ask a Question</p>
                     </div>
                     </div>";
             }

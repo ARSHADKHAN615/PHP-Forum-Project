@@ -7,9 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="Description" content="Enter your description here" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css">
-    <link rel="stylesheet" href="CSS/style.css">
-    <title>Title</title>
+    <link rel="stylesheet" href="css/style.css">
+    <title>Discuss With Arshad Khan</title>
 </head>
 
 <body>
@@ -35,6 +34,7 @@
             <div class="carousel-item">
                 <img src="img/post-bg.jpg" class="d-block w-100" alt="">
             </div>
+            <div class="overlay"></div>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -43,7 +43,11 @@
         <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
-          </a>
+        </a>
+        <div class="carousel-caption mt-5">
+            <h5>World Best Forum for Testing</h5>
+            <p>The definition of a forum is a place or a method for discussion. An example of a forum is an online message board. A law court; tribunal. ... (Internet) An Internet message board where users can post messages regarding one or more topics of discussion</p>
+        </div>
     </div>
 
     <!-- container of category start here fetch from db  -->
@@ -83,7 +87,6 @@
     require "component/_footer.php";
     ?><script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.1/jquery.js'></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
 </body>
 
 </html>

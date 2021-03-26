@@ -8,8 +8,8 @@
     <meta name="Description" content="Enter your description here" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css">
-    <link rel="stylesheet" href="CSS/style.css">
-    <title>Title</title>
+    <link rel="stylesheet" href="css/style.css">
+    <title>ThreadList</title>
 </head>
 
 <body>
@@ -29,9 +29,6 @@
          <div class='jumbotron'>
             <h1 class='display-4'>" . $row['category_name'] . "</h1>
             <p class='lead'>" . $row['category_description'] . "</p>
-            <hr class='my-4'>
-            <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-            <a class='btn btn-primary btn-lg' href='#' role='button'>Learn more</a>
         </div>
                 ";
         }
@@ -42,7 +39,8 @@
 
     <!-- GET QUESTION FROM DATA HERE AND INSERT TO DATABASE WITH REPLACE STR  AND SHOW ALERT -->
     <div class="container">
-        <h1>Ask a Question</h1>
+        <h2>Ask a Question</h2>
+        <hr>
         <?php
 
         $showAlert = false;
@@ -86,28 +84,31 @@
             echo "<form class='my-5' action='" . $_SERVER['REQUEST_URI'] . "' method='POST'>
                     <div class='form-group'>
                         <label for='title'>Problem Title</label>
-                        <input type='text' class='form-control' id='title' name='title' aria-describedby='emailHelp'>
+                        <input type='text' class='form-control' id='title' name='title' aria-describedby='emailHelp' required>
                         <small id='emailHelp' class='form-text text-muted'>Keep your title as short and crisp as possible</small>
                     </div>
                     <div class='form-group'>
                         <label for='desc'>Elaborate Your Concern</label>
-                        <textarea class='form-control' id='desc' name='desc' rows='3'></textarea>
+                        <textarea class='form-control' id='desc' name='desc' rows='3' required></textarea>
                     </div>
                         <input type='hidden' name='sno' value='" . $_SESSION['sno'] . "'>
                         <button type='submit' class='btn btn-primary'>Submit</button>
                          </div>
                 </form>   ";
         } else {
-            echo '<div class="container-fluid">
-                     <p><b>Your Are Not logged in</b></p>
+            echo '<div class="container-fluid px-0 my-5">
+                     <div class="alert alert-dark" role="alert">
+                             You are Not Login  <a href="index.php" class="alert-link">Please Login then Try</a>. 
+                      </div>
                  </div>';
         }
 
         ?>
 
         <!-- GET CATEGORIES ID AND FETCH DATA FROM DB  -->
-        <div class="container">
-            <h1>User Question</h1>
+        <div class="container px-0">
+            <h2>User Question</h2>
+            <hr>
             <?php
             $catId = $_GET['catId'];
             $sql3 = "SELECT * FROM threads WHERE thread_cat_id=$catId";
@@ -128,7 +129,7 @@
 
                 echo "   
            <div class='media my-5'>
-            <img src='img/users.png' width='100px' class='mr-3 bg-dark rounded-circle' alt='userImg'>
+            <img src='img/users.png' width='70px' class='mr-3 bg-dark rounded-circle' alt='userImg'>
             <div class='media-body'>
                 <p class='font-weight-bold my-0'>" . $row2['username'] . ". at " . date_format($date, 'd M Y') . "</p>
                 <h5 class='mt-0'><a href='thread.php?threadId=" . $threadId . "'>" . $row1['thread_title'] . "</h5></a>
@@ -142,8 +143,8 @@
             if (!$noResult) {
                 echo "<div class='jumbotron jumbotron-fluid'>
                     <div class='container'>
-                        <h1 class='display-4'>No Thread Found</h1>
-                        <p class='lead'>Be The First Person to  ask a Question</p>
+                        <h4>No Thread Found</h4>
+                        <p>Be The First Person to  ask a Question</p>
                     </div>
                     </div>";
             }

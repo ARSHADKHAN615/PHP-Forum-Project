@@ -3,22 +3,22 @@ require "component/_dbConnect.php";
 session_start();
 
 //! SESSION START HERE KARNA HAI BECAUSE HEADER SAB FILE ME HAI 
-echo ' <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+echo '<nav class="navbar navbar-expand-lg navbar-dark bg-dark navbar-fixed-top">
     <a class="navbar-brand" href="index.php">DiscussWithKhan</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
+            <li class="nav-item">
+                <a class="nav-link" href="index.php">Home</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/Forum  project/about.php">About</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Dropdown
+                    Categorise
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">';
 
@@ -43,25 +43,31 @@ echo '
 //! CHECK USER IS LOGIN AND SHOW HIS NAME AND LOGOUT BUTTON
 if (isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"]) {
     echo
-        '<form class="form-inline my-2 my-lg-0" action="/Forum  project/search.php" method="GET">
-                <input class="form-control mr-sm-2" type="search" name="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
-                <h4 class="text-dark bg-light py-2 px-3 my-0 mx-3 rounded">' . $_SESSION['username'] . '</h4>
-                <a href="component/_logout.php" type="button" class="btn btn-primary mx-2">Logout</a>
+    '<form class="form-inline my-2 my-lg-0" action="/Forum  project/search.php" method="GET">
+                        <input class="form-control mr-sm-2" type="search" name="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
+                                        <div class="dropdown">
+                                            <button class="btn dropdown-toggle text-light mx-2 outline-none" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Welcome , ' . $_SESSION['username'] . ' 
+                                            </button>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">                                    
+                                            <a href="component/_logout.php" type="button" class="dropdown-item">Logout</a>
+                                        </div>
+                                        </div>
             </form>';
 } else {
 
     echo    '<form class="form-inline my-2 my-lg-0" action="/Forum  project/search.php" method="GET">
-                   <input class="form-control mr-sm-2" name="search" type="search" placeholder="Search" aria-label="Search">
-                   <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
-             </form>
-              <button type="button" class="btn btn-primary mx-2" data-toggle="modal" data-target="#login">Login</button>
-               <button type="button" class="btn btn-primary mx-2" data-toggle="modal" data-target="#signup">Sign Up</button>
-        </div>';
+                        <input class="form-control mr-sm-2" name="search" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+                    <button type="button" class="btn btn-primary mx-2" data-toggle="modal" data-target="#login">Login</button>
+                    <button type="button" class="btn btn-primary mx-2" data-toggle="modal" data-target="#signup">Sign Up</button>
+                </div>';
 }
 
 echo ' 
-    </div>
+            </div>
 </nav>';
 
 
